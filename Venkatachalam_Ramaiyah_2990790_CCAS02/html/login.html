@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title><h1>Anagram Engine</h1></title>
+		<style type="text/css">
+    table {
+      font-family: Verdana, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    thead {
+      background: #ccc01a;
+      color: #fff;
+    }
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 6px;
+    }
+    tr:hover:nth-child(even) {
+      background-color: #EEEEEE;
+    }
+    body {
+      font-family: "Verdana", Times, serif;
+    }
+    a:visited {
+      color: blue;
+    }
+    a:hover {
+      color: green;
+    }
+</style>
+	</head>
+	<body>
+		<header>
+			<h1 style="text-align:center;"> Building an Anagram Engine</h1>
+		</header>
+		{% if user %}
+		<h1 style="text-align:Center;"> Welcome to Anagram Engine </h1>
+		{% else %}
+    <h2 style="text-align:center;"> Please login <a href='{{ url }}'>here</a></h3>
+    {% endif %}
+
+			</body>
+		</html>

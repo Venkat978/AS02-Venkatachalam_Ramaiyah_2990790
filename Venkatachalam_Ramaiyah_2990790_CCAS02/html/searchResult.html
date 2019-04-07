@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Search Results - Anagram</title>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/styles.css"/>
+</head>
+
+<body>
+  <header>
+    <h1 style="text-align:center;">Building an Anagram Engine</h1>
+      <div style="float:right; width:70%; text-align: right;">
+
+        </div>
+<div class="content">
+        <!-- user searched for anagrams of a word -->
+        {% if search_result %}
+            <table>
+                <tr>
+                    <th>
+                        <h4="text-align: left;">These are the anagrams of "{{ search_term }}":
+                    </th>
+                </tr>
+                {% for item in search_result %}
+                    <tr>
+                        <td class="anagram_table_data">{{ item }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h2>No anagrams found for this word<br>
+        {% endif %}
+        <br>
+        <form method="get" action="/">
+          <tr>
+            <td id="button_row">
+              <input type="submit" class="button" name="cancel" value="Cancel">
+              </td>
+            </tr>
+          </form>
+</div>
+
+</body>
+</html>
