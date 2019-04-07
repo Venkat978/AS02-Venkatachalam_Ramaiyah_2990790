@@ -21,7 +21,6 @@ class MainPage(webapp2.RequestHandler):
     # POST-request
     def post(self):
         self.response.headers['Content-Type'] = 'text/html'
-        # Get user data object from datastore of current user (logged in)
         my_user = utilities.getuser()
         button = self.request.get('button')
         input_text = utilities.preparetextinput(self.request.get('value'))
@@ -37,16 +36,16 @@ class MainPage(webapp2.RequestHandler):
                 permutations = utilities.a_permutations(word)
                 wordsinfo = utilities.filterenglishwords(permutations)
 
-                # Add anagram to datastore
+                # Add anagram
                 anagram_id = my_user.key.id() + '/' + utilities.generateid_for_users(word)
                 anagram_key = ndb.Key(Anagram, anagram_id)
                 anagrams = anagram_key.get()
 
                 if anagrams:
-                    # Anagram with this key already exists
+                    # Anagram with primary key already exists
                     utilities.addtoanagram(word, wordsinfo, anagram_key)
                 else:
-                    # This key doesnt exist so creates a new anagram object to datastore
+                    # This primary key does not exist so creates a new anagram object to datastore
                     utilities.addanagram_new(my_user, word, wordsinfo, anagram_id, anagram_key)
 
                 readLine = openFile.readline()
