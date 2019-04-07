@@ -61,7 +61,7 @@ class MainPage(webapp2.RequestHandler):
             words = self.generate(input_text, my_user)
             renderer.render_search(self, input_text, words)
 
-    # Returns a list with all the items (if nothing found returns None)
+    # Returns a list with all the items 
     def search(self, text, my_user):
         anagram_id = my_user.key.id() + '/' + utilities.generateid_for_users(text)
         anagram = ndb.Key(Anagram, anagram_id).get()
