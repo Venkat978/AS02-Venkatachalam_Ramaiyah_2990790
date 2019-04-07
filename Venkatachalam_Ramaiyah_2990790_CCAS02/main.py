@@ -9,14 +9,12 @@ class MainPage(webapp2.RequestHandler):
     # GET-request
     def get(self):
         self.response.headers['Content-Type'] = 'text/html'
-        # Check whether user is logged in
         if utilities.user_loggedin():
-            # if myuser object is None --> No user with key found --> new user --> make new user in datastore
             if not utilities.existing_user():
                 utilities.add_new_user(utilities.get_user())
             result, wordCount, totalCount = utilities.getanagrams_from_user(utilities.getuser())
             renderer.render_main(self, utilities.getlogouturl(self), result, wordCount, totalCount)
-        # If no user is logged in create login url
+        # If user is not logged in create login url
         else:
             renderer.render_login(self, utilities.getloginurl(self))
 
